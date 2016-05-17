@@ -8,7 +8,7 @@ namespace LazyFactoryWpf
 {
     public class CalcFactory : ICalcFactory
     {
-        public enum CalcTypes: byte { Add, Multiply, SubStract  }
+        public enum CalcTypes: byte { Add, Multiply, SubStract, Devide, NotImpemented  }
         Dictionary<CalcTypes, Lazy<ICalc>> calcOptions;
 
         // TODO DI these details from web.config or Entityframework

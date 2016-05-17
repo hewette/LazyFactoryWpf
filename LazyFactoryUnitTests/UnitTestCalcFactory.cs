@@ -20,21 +20,36 @@ namespace LazyFactoryUnitTests
 
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void GetCalculatorusingNotImplementedCalcType()
+        public void IsInvalidCalcType_UseNotImplementedCalcType_ThrowsNotImplemented()
         {
-            var x = calcFactory.getCalculatorFunction(CalcFactory.CalcTypes.SubStract);
+            var x = calcFactory.getCalculatorFunction(CalcFactory.CalcTypes.NotImpemented);
             //Assert Exception
         }
 
         [TestMethod]
-        public void GetCalculatorusingValidAddCalcType()
+        public void GetCalculator_withValidTypeCalcAdd_ReturnsTypeofCalcAdd()
+        {
+            var x = calcFactory.getCalculatorFunction(CalcFactory.CalcTypes.Add);
+            Assert.AreEqual(typeof( CalcAdd),x.GetType());
+        }
+
+        [TestMethod]
+        public void GetCalculator_withValidTypeCalcMultiply_ReturnsTypeofCalcMultiply()
+        {
+            var x = calcFactory.getCalculatorFunction(CalcFactory.CalcTypes.Multiply);
+            Assert.AreEqual(typeof(CalcMultiply), x.GetType());
+        }
+
+        [TestMethod]
+        public void UseCalcFactory_WithCalcAdd_ReturnsFour()
         {
             var x = calcFactory.getCalculatorFunction(CalcFactory.CalcTypes.Add).Calc2Ints(2,2);
             Assert.AreEqual(4, x);
         }
 
+
         [TestMethod]
-        public void GetCalculatorusingValidMultiplyCalcType()
+        public void UseCalcFactory_WithCalcMultiply_ReturnsFour()
         {
             var x = calcFactory.getCalculatorFunction(CalcFactory.CalcTypes.Multiply).Calc2Ints(2, 2);
             Assert.AreEqual(4, x);
